@@ -1,0 +1,34 @@
+extends pug/base
+
+append vars
+	- var user_info = ["ИМЯ","ДАТА РОЖДЕНИЯ","ГОРОД","КОНТАКТНЫЕ ДАННЫЕ"];
+	- var abilities_list = ["HTML5","SASS","VANILLAJS","GIT","CSS3","LESS","ANGULAR","FOUNDATION","БЭМ","GULP","JQUERY","BOOTSTRAP"];
+	- var countTo = 954;
+
+block content
+	div(class="container")
+		div(class="section section-info")
+			img(class="absolute mark-approved")
+			img(class="user-avatar float-left" src="/images/avatar.jpg")
+			ul(class="user-info-list float-left")
+				each value in user_info
+					li= value
+
+		div(class="section section-abilities")
+			h1 Навыки
+			div(class="container-abilities")
+				each value in abilities_list
+					div(class="container-checkbox column-4 float-left")
+						label(class="checkbox-label")= value
+							input(type="checkbox")
+							span(class="checkmark")
+
+		div(class="section")
+			div(class="meter float-left")
+				img(src="/images/sprites/png/meter_graphic.png")
+				div(class="meter-arrow absolute" id="arrow")
+					img(class="meter-arrow-pivot" src="/images/sprites/png/meter_arrow.png")
+			div(class="container-counter float-left")
+				h1
+					| Мой уровень владения<br/> Java Script
+				div(class="counter counter-animated noselect" 'countTo'= countTo) 0
