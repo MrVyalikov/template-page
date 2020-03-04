@@ -30,9 +30,9 @@ function updateCounter(value, arrow, text) {
 }
 
 // start counter animation when page loaded
-$(document).ready(function() {
-	$('.counter-animated').each( () => {
-		let counter = $(this);
+$(document).ready(() => {
+	$('.counter-animated').each((index, element) => {
+		let counter = $(element);
 		let arrow = $('#arrow');
 		let countTo =  counter.attr('countTo');
 
@@ -41,11 +41,11 @@ $(document).ready(function() {
 			duration: 2500,
 			delay: 3000,
 			easing:  'swing',
-			step: () => {
-				updateCounter(this.Counter, arrow, counter)
+			step: (now, tween) => {
+				updateCounter(now, arrow, counter);
 			},
 			complete: () => {
-				updateCounter(countTo, arrow, counter)
+				updateCounter(countTo, arrow, counter);
 			}
 		});
 	});
